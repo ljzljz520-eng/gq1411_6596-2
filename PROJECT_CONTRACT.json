@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "metrics": {
+    "production_loc": 2264,
+    "production_files": 21,
+    "production_packages": 8,
+    "test_files": 9,
+    "production_functions": 70,
+    "decision_points": 22
+  },
+  "persistence": {
+    "module": "go.etcd.io/bbolt",
+    "entities": ["Pattern", "Stitch", "Artisan", "Artwork", "Registration", "Resource"],
+    "reopen_test": "TestPersistenceSurvivesReopen"
+  },
+  "workflows": [
+    {"steps": ["打开专题首页", "选择纹样导航", "查看图片墙", "阅读寓意表格"], "test": "TestWorkflowBrowse"},
+    {"steps": ["打开报名表单", "填写姓名与电话", "选择体验场次", "提交并获得确认"], "test": "TestWorkflowRegistration"},
+    {"steps": ["创建存储", "写入报名", "关闭存储", "重新打开并读取"], "test": "TestPersistenceSurvivesReopen"}
+  ]
+}
